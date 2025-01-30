@@ -1,6 +1,31 @@
 # sp1-debug-issues
 
-A forkable repository to report SP1 issues.
+Forked for debugging mm checker.
+
+Running as `cargo run --release -- cpu` with `bad-stdin.bin` copied to `stdin.bin` fails with output
+```
+thread '<unnamed>' panicked at /home/brandon/.cargo/registry/src/index.crates.io-6f17d22bba15001f/sp1-core-machine-4.0.1/src/utils/mod.rs:86:17:
+fixed log2 rows is too small: got 283364, expected 262144
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+thread '<unnamed>' panicked at /home/brandon/.cargo/registry/src/index.crates.io-6f17d22bba15001f/sp1-core-machine-4.0.1/src/utils/prove.rs:430:85:
+called `Result::unwrap()` on an `Err` value: Any { .. }
+thread 'main' panicked at /home/brandon/.cargo/registry/src/index.crates.io-6f17d22bba15001f/sp1-prover-4.0.1/src/lib.rs:372:64:
+called `Result::unwrap()` on an `Err` value: Any { .. }
+```
+
+Running with `good-stdin.bin` copied to `stdin.bin` succeeds
+```
+Successfully generated proof!
+Successfully verified proof!
+```
+
+Also, `cargo run --release -- mock` mode fails for both good and bad input with a different error:
+```
+Successfully generated proof!
+thread 'main' panicked at /home/brandon/.cargo/registry/src/index.crates.io-6f17d22bba15001f/sp1-stark-4.0.1/src/air/public_values.rs:105:26:
+range end index 176 out of range for slice of length 0
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+```
 
 ## Steps
 
