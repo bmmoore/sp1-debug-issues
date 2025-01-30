@@ -18,6 +18,8 @@ Running with `good-stdin.bin` copied to `stdin.bin` succeeds
 Successfully generated proof!
 Successfully verified proof!
 ```
+`good-stdin2.bin` and `good-stdin3.bin` are additional good inputs at larger
+sizes than `good-sdin.bin`, with a similar size and a larger size than `bad-stdin.bin`.
 
 Also, `cargo run --release -- mock` mode fails for both good and bad input with a different error:
 ```
